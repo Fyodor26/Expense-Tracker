@@ -7,14 +7,28 @@
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <% allExpense.forEach(exp => { %>
-    <tr>
-      <td><%= exp.title %></td>
-      <td><%= exp.amount %></td>
-      <td><%= exp.category %></td>
-      <td><%= exp.date %></td>
-    </tr>
-
-    <% }) %>
+    <div class="table-container">
+      <h2>Your Expenses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% allExpense.forEach(exp => { %>
+          <tr>
+            <td><%= exp.title %></td>
+            <td><%= exp.amount %></td>
+            <td><%= exp.category %></td>
+            <td><%= exp.date %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

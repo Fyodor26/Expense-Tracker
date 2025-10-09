@@ -200,3 +200,64 @@ table tr:hover {
     width: 100%;
   }
 }
+/* Table container */
+.table-container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.table-container h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Expenses table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+}
+
+table th {
+  background: #2c3e50;
+  color: white;
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+table tr:hover {
+  background: #f2f2f2;
+  transition: 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  table th,
+  table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .table-container h2 {
+    font-size: 20px;
+  }
+}
