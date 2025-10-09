@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <div>
+        <a href="/">ExpenseTracker</a>
+        <% if (locals.user) { %>
+        <a href="/viewAll/<%= user._id %>">View Expenses</a>
+        <a href="/update">Update Expense</a>
+        <a href="/delete">Delete Expense</a>
+        <a href="/logout">logout</a>
+        <% } else { %>
+        <a href="/login">Login</a>
+        <a href="/signup">Signup</a>
+        <% } %>
+      </div>
+    </nav>
+    <form action="/add" method="post">
+      <input type="text" placeholder="Enter the title" name="title" />
+
+      <input type="number" placeholder="Enter amount" name="amount" />
+      <input type="category" placeholder="Enter category" name="category" />
+      <input type="date" placeholder="Enter date" name="date" />
+      <button type="submit">submit</button>
+    </form>
+  </body>
+</html>
