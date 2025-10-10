@@ -1,55 +1,56 @@
-/* Reset default browser styles */
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
 }
 
-/* Body styling */
 body {
-  background: #f4f6f9;
+  background: #f4f7fb;
   color: #333;
-  padding: 20px;
-  min-height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
-/* Navigation bar */
+/* Navbar */
 nav {
   background: #2c3e50;
-  padding: 15px 20px;
-  margin-bottom: 30px;
-  border-radius: 8px;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav div {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 nav a {
-  color: white;
+  color: #ecf0f1;
   text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s ease;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
   color: #1abc9c;
 }
 
-/* Forms general */
+/* Form container */
 form {
   background: white;
   padding: 25px;
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 450px;
+  margin: 40px auto;
   border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 15px;
 }
 
 form input,
@@ -60,13 +61,13 @@ form button {
   border-radius: 8px;
   border: 1px solid #ccc;
   outline: none;
-  transition: 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 form input:focus,
 form select:focus {
   border-color: #1abc9c;
-  box-shadow: 0 0 5px rgba(26, 188, 156, 0.3);
+  box-shadow: 0 0 5px rgba(26, 188, 156, 0.4);
 }
 
 form button {
@@ -74,8 +75,8 @@ form button {
   color: white;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s ease;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
 form button:hover {
@@ -84,180 +85,57 @@ form button:hover {
 
 /* Labels */
 label {
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-weight: 500;
+  color: #555;
 }
 
-/* Expenses table */
+/* Table styling */
 table {
-  width: 90%;
-  margin: auto;
+  width: 95%;
+  margin: 40px auto;
   border-collapse: collapse;
-  margin-top: 20px;
   background: white;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 table th,
 table td {
-  padding: 12px 15px;
+  padding: 14px;
   text-align: center;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
 }
 
 table th {
   background: #2c3e50;
   color: white;
+  font-weight: 600;
 }
 
 table tr:hover {
-  background: #f2f2f2;
+  background: #f9f9f9;
 }
 
-/* === Login / Signup Pages === */
-.auth-container {
-  background: white;
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 30px 25px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.auth-container h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-.auth-container p {
-  text-align: center;
-  font-size: 14px;
-  color: #777;
-}
-
-.auth-container input {
-  padding: 12px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  outline: none;
-}
-
-.auth-container input:focus {
-  border-color: #1abc9c;
-  box-shadow: 0 0 5px rgba(26, 188, 156, 0.3);
-}
-
-.auth-container button {
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  background: #1abc9c;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-.auth-container button:hover {
-  background: #16a085;
-}
-
-/* Links inside auth forms */
-.auth-container a {
-  text-decoration: none;
-  color: #1abc9c;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.auth-container a:hover {
-  color: #16a085;
-  text-decoration: underline;
-}
-
-/* Responsive adjustments */
-@media (max-width: 500px) {
+/* Mobile responsiveness */
+@media (max-width: 600px) {
   nav div {
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
   }
 
-  form,
-  .auth-container {
+  form {
     width: 90%;
     padding: 20px;
   }
 
   table {
     width: 100%;
-  }
-}
-/* Table container */
-.table-container {
-  max-width: 900px;
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Heading */
-.table-container h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-/* Expenses table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-table th,
-table td {
-  padding: 12px 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-  font-size: 16px;
-}
-
-table th {
-  background: #2c3e50;
-  color: white;
-  font-weight: bold;
-}
-
-table tr:nth-child(even) {
-  background: #f9f9f9;
-}
-
-table tr:hover {
-  background: #f2f2f2;
-  transition: 0.2s ease;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  table th,
-  table td {
-    padding: 10px;
     font-size: 14px;
   }
 
-  .table-container h2 {
-    font-size: 20px;
+  table th,
+  table td {
+    padding: 10px;
   }
 }

@@ -3,32 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expense Tracker</title>
+    <title>All Expenses</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <div class="table-container">
-      <h2>Your Expenses</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% allExpense.forEach(exp => { %>
-          <tr>
-            <td><%= exp.title %></td>
-            <td><%= exp.amount %></td>
-            <td><%= exp.category %></td>
-            <td><%= exp.date %></td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </div>
+    <nav>
+      <div>
+        <a href="/">ExpenseTracker</a>
+
+        <a href="/logout">Logout</a>
+      </div>
+    </nav>
+
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+      </tr>
+      <% allExpense.forEach(exp => { %>
+      <tr>
+        <td><%= exp.title %></td>
+        <td>₹<%= exp.amount %></td>
+        <td><%= exp.category %></td>
+        <td><%= exp.date ? new Date(exp.date).toDateString() : "N/A" %></td>
+      </tr>
+      <% }) %>
+    </table>
   </body>
 </html>

@@ -13,7 +13,7 @@ function generateToken(user) {
 
 function verifyToken(token) {
   const match = JWT.verify(token, secret);
-  console.log(match);
+  
   return match;
 }
 

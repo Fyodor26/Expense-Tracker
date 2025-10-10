@@ -3,23 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Update Expense</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <form action="/update" method="post">
-      <label for="update">Enter title to update</label>
-      <input id="update" type="text" name="tit" />
-      <input type="text" placeholder="Enter the title to update" name="title" />
+    <nav>
+      <div>
+        <a href="/">ExpenseTracker</a>
+        <a href="/viewAll">View Expenses</a>
+        <a href="/delete">Delete Expense</a>
+        <a href="/logout">Logout</a>
+      </div>
+    </nav>
 
-      <input type="number" placeholder="Enter amount to update" name="amount" />
+    <form action="/update" method="post">
+      <h2>Update an Expense</h2>
+
+      <label for="update">Enter title of expense to update</label>
       <input
-        type="category"
-        placeholder="Enter category update"
-        name="category"
+        id="update"
+        type="text"
+        name="tit"
+        placeholder="Existing expense title"
+        required
       />
-      <input type="date" placeholder="Enter date to update" name="date" />
-      <button type="submit">submit</button>
+
+      <label for="title">New Title</label>
+      <input
+        id="title"
+        type="text"
+        placeholder="Enter new title"
+        name="title"
+        required
+      />
+
+      <label for="amount">New Amount</label>
+      <input
+        id="amount"
+        type="number"
+        placeholder="Enter new amount"
+        name="amount"
+        required
+      />
+
+      <label for="category">New Category</label>
+      <select id="category" name="category" required>
+        <option value="" disabled selected>Select Category</option>
+        <option value="Food">🍔 Food</option>
+        <option value="Travel">✈️ Travel</option>
+        <option value="Shopping">🛍️ Shopping</option>
+        <option value="Bills">💡 Bills</option>
+        <option value="Entertainment">🎮 Entertainment</option>
+        <option value="Health">💊 Health</option>
+        <option value="Education">📚 Education</option>
+        <option value="Rent">🏠 Rent</option>
+        <option value="Savings">💰 Savings</option>
+        <option value="Other">📦 Other</option>
+      </select>
+
+      <label for="date">New Date</label>
+      <input id="date" type="date" name="date" required />
+
+      <button type="submit">Update Expense</button>
     </form>
   </body>
 </html>

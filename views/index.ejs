@@ -12,22 +12,38 @@
         <a href="/">ExpenseTracker</a>
         <% if (locals.user) { %>
         <a href="/viewAll">View Expenses</a>
-        <a href="/update">Update Expense</a>
-        <a href="/delete">Delete Expense</a>
-        <a href="/logout">logout</a>
+        <a href="/update">Update</a>
+        <a href="/delete">Delete</a>
+        <a href="/logout">Logout</a>
         <% } else { %>
         <a href="/login">Login</a>
         <a href="/signup">Signup</a>
         <% } %>
       </div>
     </nav>
-    <form action="/add" method="post">
-      <input type="text" placeholder="Enter the title" name="title" />
 
-      <input type="number" placeholder="Enter amount" name="amount" />
-      <input type="category" placeholder="Enter category" name="category" />
-      <input type="date" placeholder="Enter date" name="date" />
-      <button type="submit">submit</button>
+    <form action="/add" method="post">
+      <h2>Add New Expense</h2>
+
+      <input type="text" placeholder="Title" name="title" required />
+      <input type="number" placeholder="Amount" name="amount" required />
+
+      <select name="category" required>
+        <option value="" disabled selected>Select Category</option>
+        <option value="Food">🍔 Food</option>
+        <option value="Travel">✈️ Travel</option>
+        <option value="Shopping">🛍️ Shopping</option>
+        <option value="Bills">💡 Bills</option>
+        <option value="Entertainment">🎮 Entertainment</option>
+        <option value="Health">💊 Health</option>
+        <option value="Education">📚 Education</option>
+        <option value="Rent">🏠 Rent</option>
+        <option value="Savings">💰 Savings</option>
+        <option value="Other">📦 Other</option>
+      </select>
+
+      <input type="date" name="date" required />
+      <button type="submit">Add Expense</button>
     </form>
   </body>
 </html>
