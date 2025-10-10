@@ -3,6 +3,12 @@ const router = express.Router();
 const Expense = require("../model/expense");
 
 router.post("/add", async (req, res) => {
+  if (!req.user) {
+    return res.render("index", {
+      user: null,
+      message: "Please log in first.",
+    });
+  }
   const { title, amount, category, date } = req.body;
 
   Expense.create({

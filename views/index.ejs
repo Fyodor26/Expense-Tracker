@@ -45,5 +45,10 @@
       <input type="date" name="date" required />
       <button type="submit">Add Expense</button>
     </form>
+    <% if (typeof message !== "undefined" && message) { %>
+    <p style="color: red; text-align: center; font-weight: bold">
+      <%= message %>
+    </p>
+    <% } %>
   </body>
 </html>
