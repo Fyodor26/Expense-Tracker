@@ -1,5 +1,6 @@
 const { log } = require("console");
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
 const Expense = require("./model/expense");
@@ -34,7 +35,17 @@ app.get("/", (req, res) => {
 
 app.get("/viewAll", async (req, res) => {
   const allExpense = await Expense.find({ user: req.user._id });
-  return res.render("viewxpense", { allExpense });
+  const category = await Expense.aggregate([
+    { $match: { user: new mongoose.Types.ObjectId(req.user._id) } },
+    {
+      $group: {
+        _id: "$category",
+        totalexpense: { $sum: "$amount" },
+      },
+    },
+  ]);
+
+  return res.render("viewxpense", { category, allExpense });
 });
 
 app.get("/update", (req, res) => {

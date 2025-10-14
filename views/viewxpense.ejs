@@ -31,5 +31,17 @@
       </tr>
       <% }) %>
     </table>
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Total</th>
+      </tr>
+      <% category.forEach(cat => { %>
+      <tr>
+        <td><%= cat._id %></td>
+        <td><%= cat.totalexpense %></td>
+      </tr>
+      <% }) %>
+    </table>
   </body>
 </html>
