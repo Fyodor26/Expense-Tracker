@@ -47,6 +47,47 @@ app.get("/viewAll", async (req, res) => {
 
   return res.render("viewxpense", { category, allExpense });
 });
+app.get("/dashboard", async (req, res) => {
+  const total = await Expense.aggregate([
+    { $match: { user: new mongoose.Types.ObjectId(req.user._id) } },
+    {
+      $group: { _id: "null", totalSpends: { $sum: "$amount" } },
+    },
+  ]);
+
+  const highest = await Expense.aggregate([
+    { $match: { user: new mongoose.Types.ObjectId(req.user._id) } },
+    {
+      $group: {
+        _id: "$category",
+        high: { $sum: "$amount" },
+      },
+    },
+    {
+      $sort: {
+        high: -1,
+      },
+    },
+    {
+      $limit: 1,
+    },
+  ]);
+  const category = await Expense.aggregate([
+    { $match: { user: new mongoose.Types.ObjectId(req.user._id) } },
+    {
+      $group: {
+        _id: "$category",
+        totalexpense: { $sum: "$amount" },
+      },
+    },
+  ]);
+
+  return res.render("dashboard", {
+    total: total,
+    highest: highest,
+    category: category,
+  });
+});
 
 app.get("/update", (req, res) => {
   return res.render("update");

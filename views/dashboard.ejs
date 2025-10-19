@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <div>
+        <a href="/">ExpenseTracker</a>
+        <a href="/viewAll">View Expenses</a>
+        <a href="/update">Update</a>
+        <a href="/delete">Delete</a>
+        <a href="/logout">Logout</a>
+        <a href="/dashboard">Dashboard</a>
+      </div>
+    </nav>
+    <table>
+      <tr>
+        <th>Total Spends</th>
+        <% total.forEach(e => { %>
+
+        <td><%= e.totalSpends %></td>
+        <% }) %>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th>Highest Spending Category</th>
+        <th>total</th>
+      </tr>
+      <% highest.forEach(elem => { %>
+
+      <td><%= elem._id %></td>
+      <td><%= elem.high %></td>
+      <% }) %>
+    </table>
+    <div class="chart-box">
+      <canvas id="expensechart"></canvas>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const category = <%- JSON.stringify(category) %>;
+
+    const labels = category.map(c => c._id);
+    const data = category.map(c => c.totalexpense);
+
+    new Chart(document.getElementById('expensechart'), {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Total Expense',
+          data: data,
+          backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0'],
+          hoverOffset: 8
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Expense Distribution by Category'
+          }
+        }
+      }
+    });
+  </script>
+</html>
