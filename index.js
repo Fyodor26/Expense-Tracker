@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { log } = require("console");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -9,14 +10,8 @@ const userRoute = require("./routes/user");
 const { connectDB } = require("./connection");
 const { checkAuthentication } = require("./middlewares/authentication");
 const cookieParser = require("cookie-parser");
-
-connectDB("mongodb://127.0.0.1:27017/Expense-Tracker")
-  .then(() => {
-    "Connected to MongoDb";
-  })
-  .catch((err) => {
-    console.log("Error", err);
-  });
+const port = process.env.PORT || 3000;
+connectDB(process.env.MONGO_URL);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -27,7 +22,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use("/", expenseRoute);
 app.use("/", userRoute);
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   return res.render("index", {
     user: JSON.stringify(req.user),
   });
@@ -102,6 +97,6 @@ app.get("/logout", async (req, res) => {
   res.redirect("/");
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Listening on port 3000");
 });

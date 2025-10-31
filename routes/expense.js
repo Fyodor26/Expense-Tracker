@@ -40,5 +40,25 @@ router.post("/delete", async (req, res) => {
   const deleted = await User.deleteOne({ title: del });
   return res.send("Item Deleted Successfully");
 });
+router.get("/monthly", async (req, res) => {
+  const report = await Expense.aggregate([
+    {
+      $group: {
+        _id: { month: { $month: "$date" }, year: { $year: "$date" } },
+        totalspent: { $sum: "$amount" },
+      },
+    },
+    { $sort: { "_id.year": -1, "_id.month": -1 } },
+  ]);
 
+  const formatted = report.map((r) => ({
+    month: `${r._id.month}-${r._id.year}`,
+    totalspent: r.totalspent,
+  }));
+
+  return res.render("index", {
+    user: JSON.stringify(req.user),
+    report: formatted,
+  });
+});
 module.exports = router;
