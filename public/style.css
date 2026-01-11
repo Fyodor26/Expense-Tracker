@@ -220,3 +220,14 @@ button:hover {
   margin: 30px auto;
   padding: 20px;
 }
+/* ===== SELECT DROPDOWN FIX ===== */
+form select {
+  background-color: rgba(30, 30, 30, 0.95);
+  color: #e8f5e9;
+}
+
+/* dropdown list (options) */
+form select option {
+  background-color: #1e1e1e; /* dark background */
+  color: #e8f5e9; /* visible text */
+}
